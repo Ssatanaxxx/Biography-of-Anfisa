@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html class="page" lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Анфиса - Креативный кот</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        .paint-drip {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+            background: linear-gradient(135deg, var(--pink) 0%, var(--blue) 100%);
+            clip-path: url(#paintDrip);
+            opacity: 0.15;
+        }
+
+        #laser-cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: red;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            box-shadow: 0 0 15px red;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        body:hover #laser-cursor {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body class="page__body">
+    <div class="paint-drip">
+        <svg width="0" height="0" style="position:absolute;">
+            <defs>
+                <clipPath id="paintDrip" clipPathUnits="objectBoundingBox">
+                    <path d="M0,0 C0.2,0.1 0.4,0.05 0.6,0.1 C0.8,0.15 1,0.05 1,0 L1,1 L0,1 Z" />
+                </clipPath>
+                <!-- Добавим еще несколько вариантов капель -->
+                <clipPath id="paintDrip2" clipPathUnits="objectBoundingBox">
+                    <path d="M0,0 C0.1,0.2 0.3,0.1 0.5,0.15 C0.7,0.2 0.9,0.1 1,0 L1,1 L0,1 Z" />
+                </clipPath>
+                <clipPath id="paintDrip3" clipPathUnits="objectBoundingBox">
+                    <path d="M0,0 C0.1,0.15 0.4,0.05 0.6,0.2 C0.8,0.1 0.9,0.05 1,0 L1,1 L0,1 Z" />
+                </clipPath>
+            </defs>
+        </svg>
+    </div>
+    <div class="container">
+        <div class="bg-element bg-element--1"></div>
+        <div class="bg-element bg-element--12"></div>
+        <div class="bg-element bg-element--13"></div>
+        <div class="bg-element bg-element--14"></div>
+        <div class="bg-element bg-element--2"></div>
+
+        <!-- Шапка -->
+        <header class="header">
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a class="nav__link nav__link--home" href="#home">Главная</a>
+                    </li>
+                    <li class="nav__item">
+                        <a class="nav__link" href="#about">Обо мне</a>
+                    </li>
+                    <li class="nav__item">
+                        <a class="nav__link" href="#skills">Навыки</a>
+                    </li>
+                    <li class="nav__item">
+                        <a class="nav__link" href="#blog">Дневник</a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a class="nav__link" href="#gallery">Галерея</a>
+                    </li>
+                    <li class="nav__item">
+                        <a class="nav__link" href="#guests">Гости</a>
+                    </li>
+                    <li class="nav__item">
+                        <a class="nav__link" href="#schedule">Распорядок дня</a>
+                    </li>
+                    <li class="nav__item">
+                        <a class="nav__link" href="#contact">Контакты</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Основные разделы -->
+        <div class="screens">
+            <!-- Главная -->
+            <section class="screen screen--home" id="home">
+                <div class="statements">
+                    <div class="statement theme--yellow">
+                        <h2 class="statement__title">Привет, я Анфиса</h2>
+                        <a class="button button--learn-more" href="#about">Узнать больше</a>
+                    </div>
+                    <div class="interactive-cat">
+                        <p class="statement__desc">💖 Кликни на меня 💖</p>
+                        <img src="./image/cat1.jpg" alt="Анфиса" class="cat-avatar" id="catAvatar">
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Обо мне -->
+            <section class="screen screen--about" id="about">
+                <div class="anatomy">
+                    <div class="anatomy__sections">
+                        <div class="anatomy-section" data-view="love">
+                            <h3>Любовь к мяте</h3>
+                            <p>Кошачья мята - мой главный источник вдохновения. Я могу часами кататься по полу после
+                                контакта с этим волшебным растением.</p>
+                        </div>
+                        <div class="anatomy-section" data-view="sleep">
+                            <h3>Искусство сна</h3>
+                            <p>Я освоила более 20 поз для сна в любых условиях. Мой рекорд - 18 часов непрерывного сна с
+                                короткими перерывами на еду.</p>
+                        </div>
+                        <div class="anatomy-section" data-view="hunt">
+                            <h3>Охотничьи навыки</h3>
+                            <p>За свою карьеру я поймала 127 игрушечных мышей, 3 настоящих мухи и 1 полиэтиленовый
+                                пакет.</p>
+                        </div>
+                        <div class="anatomy-section" data-view="food">
+                            <h3>Гастрономические предпочтения</h3>
+                            <p>Я разбираюсь в кулинарии и могу отличить премиальный корм от эконом-класса по звуку
+                                открывающейся пачки.</p>
+                        </div>
+                    </div>
+
+                    <div class="anatomy__views">
+                        <div class="view view--love active">
+                            <div class="view__data">
+                            </div>
+                            <div class="view__display">
+                                <button class="button button--close">Закрыть</button>
+                                <div class="tube-animation"></div>
+                                <h3 class="view__title">Я люблю кошачью мяту</h3>
+                                <p>Мои исследования показали, что кошачья мята вызывает состояние эйфории у 70% кошек. Я
+                                    горжусь тем, что вхожу в этот процент.</p>
+                                <div class="view__nav">
+                                    <button class="button button--nav button--prev">Назад</button>
+                                    <button class="button button--nav button--next">Вперед</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="view view--sleep">
+                            <div class="view__data">
+                            </div>
+                            <div class="view__display">
+                                <button class="button button--close">Закрыть</button>
+                                <div class="tube-animation" style="background-color: var(--blue);"></div>
+                                <h3 class="view__title">Искусство сна</h3>
+                                <p>Я разработала собственную методику сна, которая позволяет максимально эффективно
+                                    восстанавливать силы между приемами пищи.</p>
+                                <div class="view__nav">
+                                    <button class="button button--nav button--prev">Назад</button>
+                                    <button class="button button--nav button--next">Вперед</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="view view--hunt">
+                            <div class="view__data">
+                            </div>
+                            <div class="view__display">
+                                <button class="button button--close">Закрыть</button>
+                                <div class="tube-animation" style="background-color: var(--pink);"></div>
+                                <h3 class="view__title">Охотничьи навыки</h3>
+                                <p>Моя техника охоты включает элементы ниндзюцу и балета. Я могу часами сидеть в засаде,
+                                    а затем совершить молниеносный бросок.</p>
+                                <div class="view__nav">
+                                    <button class="button button--nav button--prev">Назад</button>
+                                    <button class="button button--nav button--next">Вперед</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="view view--food">
+                            <div class="view__data">
+                            </div>
+                            <div class="view__display">
+                                <button class="button button--close">Закрыть</button>
+                                <div class="tube-animation" style="background-color: var(--yellow);"></div>
+                                <h3 class="view__title">Гастрономические предпочтения</h3>
+                                <p>Я провела обширное исследование кормов разных марок и пришла к выводу, что самый
+                                    вкусный - тот, который в миске у соседского кота.</p>
+                                <div class="view__nav">
+                                    <button class="button button--nav button--prev">Назад</button>
+                                    <button class="button button--nav button--next">Вперед</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="screen screen--skills" id="skills">
+                <div class="skills-container">
+                    <div class="skill-up">
+                        <span class="skill-paw"></span>
+                        <h2 class="section-title">Профессиональные навыки</h2>
+                        <span class="skill-paw"></span>
+                    </div>
+                    <div class="skills-grid">
+                        <!-- Навык 1 -->
+                        <div class="skill-card">
+                            <div class="skill-icon">🐾</div>
+                            <h3>Тихие шаги</h3>
+                            <div class="skill-meter">
+                                <div class="skill-level" style="width: 95%;"></div>
+                            </div>
+                            <p>Мастер стелс-передвижения по квартире ночью</p>
+                        </div>
+
+                        <!-- Навык 2 -->
+                        <div class="skill-card">
+                            <div class="skill-icon">🛏️</div>
+                            <h3>Занимание пространства</h3>
+                            <div class="skill-meter">
+                                <div class="skill-level" style="width: 100%;"></div>
+                            </div>
+                            <p>Занимаю 90% кровати, оставляя хозяину 10%</p>
+                        </div>
+
+                        <!-- Навык 3 -->
+                        <div class="skill-card">
+                            <div class="skill-icon">🎣</div>
+                            <h3>Охота за лазером</h3>
+                            <div class="skill-meter">
+                                <div class="skill-level" style="width: 80%;"></div>
+                            </div>
+                            <p>Поймала 0 из 1000 красных точек, но не сдаюсь</p>
+                        </div>
+
+                        <!-- Навык 4 -->
+                        <div class="skill-card">
+                            <div class="skill-icon">🍽️</div>
+                            <h3>Выпрашивание еды</h3>
+                            <div class="skill-meter">
+                                <div class="skill-level" style="width: 120%;"></div>
+                            </div>
+                            <p>Даже когда только что поела</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="screen screen--blog" id="blog">
+                <div class="blog-container">
+                    <h2 class="section-title">
+                        <span class="paw-decor left-paw">🐾</span>
+                        Мой дневник
+                        <span class="paw-decor right-paw">🐾</span>
+                    </h2>
+
+                    <div class="blog-timeline">
+                        <!-- Запись 1 -->
+                        <div class="blog-post">
+                            <div class="post-header">
+                                <div class="post-date">12.03.2023</div>
+                                <div class="post-category science">Наука</div>
+                            </div>
+                            <h3 class="post-title">Разбила вазу. Снова.</h3>
+                            <p class="post-content">Эксперимент по проверке гравитации прошел успешно. Хозяин почему-то
+                                не оценил научный подход...</p>
+                            <div class="post-footer">
+                                <div class="post-tags">
+                                    <span class="tag">#наука</span>
+                                    <span class="tag">#гравитация</span>
+                                    <span class="tag">#вазы</span>
+                                </div>
+                                <div class="post-reactions">
+                                    <span class="reaction">😼 12</span>
+                                    <span class="reaction">💬 5</span>
+                                </div>
+                            </div>
+                            <div class="post-decoration"></div>
+                        </div>
+
+                        <!-- Запись 2 -->
+                        <div class="blog-post">
+                            <div class="post-header">
+                                <div class="post-date">28.02.2023</div>
+                                <div class="post-category food">Гастрономия</div>
+                            </div>
+                            <h3 class="post-title">Открытие: корм вкуснее из человеческих рук</h3>
+                            <p class="post-content">Провела сравнительный анализ. Вердикт: еда из рук хозяина вкуснее на
+                                73%, даже если это тот же корм.</p>
+                            <div class="post-footer">
+                                <div class="post-tags">
+                                    <span class="tag">#гастрономия</span>
+                                    <span class="tag">#исследования</span>
+                                </div>
+                                <div class="post-reactions">
+                                    <span class="reaction">😼 24</span>
+                                    <span class="reaction">💬 8</span>
+                                </div>
+                            </div>
+                            <div class="post-decoration"></div>
+                        </div>
+
+                        <!-- Запись 3 -->
+                        <div class="blog-post">
+                            <div class="post-header">
+                                <div class="post-date">15.02.2023</div>
+                                <div class="post-category records">Рекорды</div>
+                            </div>
+                            <h3 class="post-title">Новый рекорд сна</h3>
+                            <p class="post-content">18 часов 37 минут! Побила свой предыдущий рекорд. Проснулась только
+                                потому, что услышала звук открывающегося холодильника.</p>
+                            <div class="post-footer">
+                                <div class="post-tags">
+                                    <span class="tag">#сон</span>
+                                    <span class="tag">#рекорды</span>
+                                </div>
+                                <div class="post-reactions">
+                                    <span class="reaction">😼 42</span>
+                                    <span class="reaction">💬 15</span>
+                                </div>
+                            </div>
+                            <div class="post-decoration"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="screen screen--gallery" id="gallery">
+                <div class="gallery-container">
+                    <h2 class="section-title">Фотосессии</h2>
+                    <p class="section-subtitle">Мои лучшие моменты в объективе</p>
+
+                    <div class="gallery-grid">
+                        <div class="gallery-item" style="background-image: url('./image/cat6.jpg');">
+                            <div class="gallery-caption">"Меня любят"</div>
+                        </div>
+                        <div class="gallery-item" style="background-image: url('./image/cat5.jpg');">
+                            <div class="gallery-caption">"Шо тут у нас?"</div>
+                        </div>
+                        <div class="gallery-item" style="background-image: url('./image/cat7.jpg');">
+                            <div class="gallery-caption">"Послеобеденный сон"</div>
+                        </div>
+                        <div class="gallery-item" style="background-image: url('./image/cat2.jpg');">
+                            <div class="gallery-caption">"Охотничья поза"</div>
+                        </div>
+                        <div class="gallery-item" style="background-image: url('./image/cat9.jpg');">
+                            <div class="gallery-caption">"Чуть-чуть грации не помешает"</div>
+                        </div>
+                        <div class="gallery-item" style="background-image: url('./image/cat8.jpg');">
+                            <div class="gallery-caption">"Выгуливаю человека"</div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-controls">
+                        <button class="gallery-button gallery-prev">←</button>
+                        <button class="gallery-button gallery-next">→</button>
+                    </div>
+                </div>
+            </section>
+            <section class="screen screen--guests" id="guests">
+                <div class="guests-container">
+                    <h2 class="section-title">Когда приходят гости</h2>
+                    <p class="section-subtitle">Мой официальный протокол поведения для посетителей</p>
+
+                    <div class="protocol-steps">
+                        <!-- Шаг 1 -->
+                        <div class="protocol-card protocol-card--inspection">
+                            <div class="protocol-number">01</div>
+                            <div class="protocol-content">
+                                <h3>Тщательный осмотр</h3>
+                                <p>Обнюхиваю гостей на предмет чужих кошачьих запахов и принесенных лакомств. Особое
+                                    внимание уделяю обуви и сумкам.</p>
+                                <div class="protocol-duration">Длительность: 3-7 минут</div>
+                            </div>
+                            <div class="protocol-icon">🔍</div>
+                        </div>
+
+                        <!-- Шаг 2 -->
+                        <div class="protocol-card protocol-card--ignore">
+                            <div class="protocol-number">02</div>
+                            <div class="protocol-content">
+                                <h3>Тактика игнорирования</h3>
+                                <p>Делаю вид, что гости мне совершенно неинтересны. Ухожу в другую комнату,
+                                    демонстративно повернувшись спиной.</p>
+                                <div class="protocol-duration">Длительность: 10-15 минут</div>
+                            </div>
+                            <div class="protocol-icon">🙈</div>
+                        </div>
+
+                        <!-- Шаг 3 -->
+                        <div class="protocol-card protocol-card--approach">
+                            <div class="protocol-number">03</div>
+                            <div class="protocol-content">
+                                <h3>Осторожное сближение</h3>
+                                <p>Подхожу к самому тихому гостю, делая вид, что случайно оказалась рядом. Позволяю
+                                    погладить себя ровно один раз.</p>
+                                <div class="protocol-duration">Длительность: 2-3 минуты</div>
+                            </div>
+                            <div class="protocol-icon">🐾</div>
+                        </div>
+
+                        <!-- Шаг 4 -->
+                        <div class="protocol-card protocol-card--test">
+                            <div class="protocol-number">04</div>
+                            <div class="protocol-content">
+                                <h3>Проверка на прочность</h3>
+                                <p>Внезапно запрыгиваю гостю на колени без предупреждения. Если не сбрасывают -
+                                    автоматически получают статус "проверенный".</p>
+                                <div class="protocol-duration">Длительность: до конца визита</div>
+                            </div>
+                            <div class="protocol-icon">⚡</div>
+                        </div>
+
+                        <!-- Шаг 5 -->
+                        <div class="protocol-card protocol-card--begging">
+                            <div class="protocol-number">05</div>
+                            <div class="protocol-content">
+                                <h3>Выпрашивание еды</h3>
+                                <p>Использую гостей как дополнительный источник угощений. Делаю максимально жалобные
+                                    глаза, даже если только что поела.</p>
+                                <div class="protocol-duration">Длительность: пока не дадут еду</div>
+                            </div>
+                            <div class="protocol-icon">🥺</div>
+                        </div>
+                    </div>
+
+                    <div class="guest-rules">
+                        <h3>Строгие правила для гостей:</h3>
+                        <ul class="rules-list">
+                            <li>Не пытаться брать меня на руки без разрешения</li>
+                            <li>Не смотреть мне прямо в глаза - это угроза</li>
+                            <li>Не гладить против шерсти - это карается укусом</li>
+                            <li>Все принесенные угощения подлежат обязательной проверке</li>
+                            <li>Фотосессии только с моего согласия (обычно соглашаюсь за угощение)</li>
+                        </ul>
+
+                        <div class="emergency-box">
+                            <h4>Чрезвычайные ситуации:</h4>
+                            <p>Если я внезапно убежала и спряталась - значит, кто-то нарушил протокол. Рекомендуется
+                                оставить на видном месте пакетик с влажным кормом для примирения.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="screen screen--schedule" id="schedule">
+                <div class="schedule-container">
+                    <h2 class="section-title">Мой распорядок дня</h2>
+
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-time">6:00</div>
+                            <div class="timeline-content">
+                                <h3>Будильник для хозяев</h3>
+                                <p>Тщательно вылизываю лицо хозяина, чтобы разбудить его на работу</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-time">6:30</div>
+                            <div class="timeline-content">
+                                <h3>Завтрак</h3>
+                                <p>Требую еду, даже если в миске еще есть корм</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-time">7:00-15:00</div>
+                            <div class="timeline-content">
+                                <h3>Дневной сон</h3>
+                                <p>Восстанавливаю силы после тяжелого утра</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-time">15:30</div>
+                            <div class="timeline-content">
+                                <h3>Обед</h3>
+                                <p>Снова ем, потому что проснулась</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-time">16:00-20:00</div>
+                            <div class="timeline-content">
+                                <h3>Активность</h3>
+                                <p>Бегаю по квартире, как будто за мной гонятся</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-time">21:00</div>
+                            <div class="timeline-content">
+                                <h3>Ночная охота</h3>
+                                <p>Ловлю невидимых существ под диваном</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="screen screen--contact" id="contact">
+                <div class="contact-container">
+                    <div class="section-up">
+                        <h2 class="section-title">Свяжитесь со мной</h2>
+                        <p class="section-subtitle">Если хотите предложить угощение или погладить</p>
+                        <form class="contact-form">
+                            <input type="text" placeholder="Ваше имя" required>
+                            <input type="email" placeholder="Ваш email" required>
+                            <textarea placeholder="Ваше сообщение..."></textarea>
+                            <button class="button" type="submit">Отправить мур-сообщение</button>
+                        </form>
+                    </div>
+
+                    <div class="contact-methods">
+                        <!-- Метод 1 -->
+                        <div class="contact-card">
+                            <div class="contact-icon">📧</div>
+                            <h3>Email</h3>
+                            <p>anfisa@catmail.com</p>
+                            <small>Отвечаю в течение 1-3 дней, если не сплю</small>
+                        </div>
+
+                        <!-- Метод 2 -->
+                        <div class="contact-card">
+                            <div class="contact-icon">📱</div>
+                            <h3>Соцсети</h3>
+                            <div class="social-links">
+                                <a class="social-link" href="#">Instagram</a>
+                                <a class="social-link" href="#">CatTok</a>
+                                <a class="social-link" href="#">Purr-terest</a>
+                            </div>
+                        </div>
+
+                        <!-- Метод 3 -->
+                        <div class="contact-card">
+                            <div class="contact-icon">🏠</div>
+                            <h3>Физический адрес</h3>
+                            <p>Диван в гостиной, третья подушка слева</p>
+                            <small>Часы приема: когда не сплю</small>
+                        </div>
+                    </div>
+
+
+                </div>
+            </section>
+            <!-- Другие секции будут здесь по желанию -->
+        </div>
+
+        <!-- Подвал -->
+        <footer class="footer">
+            <div class="footer__bar"></div>
+            <div class="footer__content">
+                <div class="copyright">© 2023 Анфиса. Продам гараж.</div>
+                <ul class="social">
+                    <li class="social__item">
+                        <a class="social__link social__link--instagram" href="#">Instagram</a>
+                    </li>
+                    <li class="social__item">
+                        <a class="social__link social__link--twitter" href="#">Twitter</a>
+                    </li>
+                    <li class="social__item">
+                        <a class="social__link social__link--youtube" href="#">YouTube</a>
+                    </li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+
+    <script src="./javaScript/main.js"></script>
+    <script src="./javaScript/Lenis.js"></script>
+    <div id="mouse-game"
+        style="position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:999;"></div>
+    <div id="laser-cursor"></div>
+    <script>
+        document.addEventListener('mousemove', (e) => {
+            const cursor = document.getElementById('laser-cursor');
+            cursor.style.left = `${e.clientX - 10}px`;
+            cursor.style.top = `${e.clientY - 10}px`;
+            const cat = document.getElementById('cat');
+            if (cat) {
+                const angle = Math.atan2(e.clientY - cat.offsetTop, e.clientX - cat.offsetLeft);
+                cat.style.transform = `rotate(${angle}rad)`;
+            }
+        });
+
+        function spawnMouse() {
+            const mouse = document.createElement('div');
+            mouse.innerHTML = '🐭';
+            mouse.style.position = 'absolute';
+            mouse.style.fontSize = '40px';
+            mouse.style.left = `${Math.random() * 80 + 10}vw`;
+            mouse.style.top = `${Math.random() * 80 + 10}vh`;
+            mouse.style.cursor = 'pointer';
+            mouse.style.pointerEvents = 'auto';
+
+            mouse.addEventListener('click', () => {
+                mouse.remove();
+                const catElement = document.getElementById('cat');
+                if (catElement) {
+                    catElement.src = 'happy-cat.jpg';
+                }
+            });
+
+            document.getElementById('mouse-game').appendChild(mouse);
+
+            setTimeout(() => mouse.remove(), 3000);
+        }
+
+        setInterval(spawnMouse, 2000);
+
+        const achievements = {
+            pets: {
+                count: 0,
+                goal: 10,
+                badge: '🐈 Профессиональный гладильщик'
+            },
+            meows: {
+                count: 0,
+                goal: 5,
+                badge: '🗣️ Знаток мяуканья'
+            }
+        };
+
+        function checkAchievement(type) {
+            achievements[type].count++;
+            if (achievements[type].count === achievements[type].goal) {
+                const badge = document.createElement('div');
+                badge.textContent = achievements[type].badge;
+                badge.style.position = 'fixed';
+                badge.style.bottom = '20px';
+                badge.style.right = '20px';
+                badge.style.background = 'white';
+                badge.style.padding = '10px';
+                badge.style.borderRadius = '10px';
+                document.body.appendChild(badge);
+
+                setTimeout(() => badge.remove(), 3000);
+            }
+        }
+
+        document.getElementById('cat').addEventListener('click', () => {
+            checkAchievement('meows');
+        });
+    </script>
+</body>
+
+</html>

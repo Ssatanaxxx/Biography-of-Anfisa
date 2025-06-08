@@ -1,0 +1,6 @@
+.container {
+    height: 748px;
+    min-width: 500px;
+    position: relative;
+    -webkit-backface-visibility: hidden;
+}

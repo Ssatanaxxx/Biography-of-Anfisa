@@ -1,0 +1,83 @@
+.protocol-steps {
+    max-width: 800px;
+    margin: 3rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.protocol-card {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+    transform: translateX(-20px);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.protocol-card.visible {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.protocol-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+}
+
+.protocol-card--inspection::before {
+    background: #FFD166;
+}
+
+.protocol-card--ignore::before {
+    background: #06D6A0;
+}
+
+.protocol-card--approach::before {
+    background: #118AB2;
+}
+
+.protocol-card--test::before {
+    background: #EF476F;
+}
+
+.protocol-card--begging::before {
+    background: #7209B7;
+}
+
+.protocol-number {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-right: 1.5rem;
+    color: rgba(0, 0, 0, 0.1);
+}
+
+.protocol-content {
+    flex: 1;
+}
+
+.protocol-content h3 {
+    margin-bottom: 0.5rem;
+    color: var(--dark);
+}
+
+.protocol-duration {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
+.protocol-icon {
+    font-size: 2rem;
+    margin-left: 1.5rem;
+}
