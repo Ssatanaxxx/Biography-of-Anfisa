@@ -1,0 +1,79 @@
+.button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: var(--dark);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 500;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.button:hover {
+    transform: translateY(-3px);
+    background-color: black;
+}
+
+.button--learn-more {
+    background-color: var(--pink);
+}
+
+.button--nav {
+    background-color: transparent;
+    color: var(--dark);
+    border: 1px solid var(--dark);
+}
+
+.button--nav:hover {
+    background-color: var(--dark);
+    color: white;
+}
+
+.gallery-button {
+    background: none;
+    border: none;
+}
+
+.gallery-button:hover .cat-paw::before {
+    transform: scale(1.1);
+}
+
+.cat-paw-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    border: none;
+    background: rgba(239, 71, 111, 0.7);
+    border-radius: 50%;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cat-paw-button:hover {
+    background: #EF476F;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.cat-paw-button::after {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: #FFF;
+    -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>') no-repeat center;
+    mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>') no-repeat center;
+}
+
+.button--close {
+    margin-bottom: 20px;
+}

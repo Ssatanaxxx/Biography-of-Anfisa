@@ -1,0 +1,9 @@
+.facts ul {
+    list-style: none;
+    padding: 0;
+}
+
+.facts li {
+    margin: 10px 0;
+    font-style: italic;
+}

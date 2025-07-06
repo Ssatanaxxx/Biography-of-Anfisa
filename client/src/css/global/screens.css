@@ -1,0 +1,34 @@
+.screens {
+    position: relative;
+}
+
+.screen {
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 8rem 4rem;
+    display: flex;
+    align-items: center;
+}
+
+.screen--home {
+    background-color: var(--yellow);
+    position: relative;
+    overflow: hidden;
+}
+
+.screen--about {
+    background-color: var(--light);
+}
+
+.screen--guests {
+    background-color: #fff5f5;
+}
+
+.screen--skills {
+    background-color: var(--green);
+}
+
+.screen--schedule {
+    padding-bottom: 0;
+}

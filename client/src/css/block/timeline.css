@@ -1,0 +1,39 @@
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 3rem auto 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50px;
+    width: 2px;
+    background: var(--pink);
+}
+
+.timeline-item {
+    position: relative;
+    padding-left: 170px;
+    margin-bottom: 3rem;
+}
+
+.timeline-time {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: var(--pink);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-weight: bold;
+}
+
+.timeline-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}

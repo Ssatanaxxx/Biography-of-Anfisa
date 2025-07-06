@@ -1,2 +1,10 @@
-# Biography-of-Anfisa
-I wrote a site about my cat, actually a biography and how it would seem to me if the cats knew how to blame sites
+# Проект "Личные заметки"
+
+- [Клиентская часть](./client/README.md)
+- [Серверная часть](./server/README.md)
+
+
+
+Пример отображения интерфейса приложения:
+- [Авторизация](./example/auth.jpg)
+- [Список заметок](./example/noteList.jpg)

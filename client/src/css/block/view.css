@@ -1,0 +1,23 @@
+.view {
+    background-color: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    display: none;
+}
+
+.view.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+.view__nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.view__title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}

@@ -1,0 +1,33 @@
+.cat-paw {
+    margin-top: 15px;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    position: relative;
+}
+
+.cat-paw::before,
+.cat-paw::after {
+    content: '';
+    position: absolute;
+    background: #EF476F;
+    border-radius: 50%;
+}
+
+.cat-paw::before {
+    width: 16px;
+    height: 16px;
+    top: 4px;
+    left: 4px;
+}
+
+.cat-paw::after {
+    width: 8px;
+    height: 8px;
+    top: 0;
+    left: 0;
+    box-shadow:
+        16px 0 0 0 currentColor,
+        8px 12px 0 0 currentColor,
+        0 12px 0 0 currentColor;
+}

@@ -1,0 +1,111 @@
+/* Block
+@import "./css/block/anatomy.css";
+@import "./css/block/animation.css";
+@import "./css/block/bg-element.css";
+@import "./css/block/blog.css";
+@import "./css/block/cat-paw.css";
+@import "./css/block/contacts.css";
+@import "./css/block/emergency.css";
+@import "./css/block/facts.css";
+@import "./css/block/footer.css";
+@import "./css/block/gallery.css";
+@import "./css/block/grid.css";
+@import "./css/block/guest.css";
+@import "./css/block/header.css";
+@import "./css/block/hero.css";
+@import "./css/block/protocol.css";
+@import "./css/block/rules.css";
+@import "./css/block/skills.css";
+@import "./css/block/statements.css";
+@import "./css/block/timeline.css";
+@import "./css/block/view.css";
+
+/* Fonts */
+/* @import "./css/fonts/fonts.css"; */
+
+/* Global */
+/* @import "./css/global/button.css"; */
+/* @import "./css/global/container.css"; */
+/* @import "./css/global/reboots.css"; */
+/* @import "./css/global/screens.css"; */
+/* @import "./css/global/section.css"; */
+
+/* Media */
+/* @import "./css/media/media.css"; */
+@import "./css/style.css";
+
+.burger-button {
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+}
+
+.burger-line {
+    width: 2rem;
+    height: 0.25rem;
+    background: #333;
+    transition: all 0.3s linear;
+}
+
+.burger-button.open .burger-line:nth-child(1) {
+    transform: rotate(45deg) translate(0.4rem, 0.4rem);
+}
+
+.burger-button.open .burger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.burger-button.open .burger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(0.4rem, -0.4rem);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+
+/* Базовые стили меню (скрыто) */
+.burger-menu {
+    position: fixed;
+    top: 0;
+    left: -100%; /* Прячем за пределами экрана */
+    width: 300px; /* Ширина меню */
+    height: 100vh;
+    background: white;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    transition: left 0.3s ease; /* Анимация выезда */
+    z-index: 100;
+    opacity: 0; /* Полная прозрачность */
+    pointer-events: none; /* Клики сквозь меню */
+}
+
+/* Состояние "открыто" */
+.burger-menu.open {
+    margin-left: auto;
+    left: 0; /* Показываем */
+    opacity: 1; /* Полная видимость */
+    pointer-events: auto; /* Клики работают */
+}
+
+/* Список ссылок (появляется с задержкой) */
+.burger-list {
+    padding: 60px 20px;
+    opacity: 0;
+    transition: opacity 0.2s ease 0.1s; /* Задержка 0.1s */
+}
+
+.burger-menu.open .burger-list {
+    opacity: 1;
+}

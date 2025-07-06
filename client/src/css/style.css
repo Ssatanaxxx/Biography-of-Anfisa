@@ -1,0 +1,47 @@
+/* Выстроил всё по алфавиту */
+
+/* Global */ 
+@import "global/button.css";
+
+@import "global/container.css";
+
+@import "fonts/fonts.css";
+
+@import "global/reboots.css";
+
+@import "global/section.css";
+@import "global/screens.css";
+
+
+/* Block */
+@import "block/anatomy.css";
+@import "block/animation.css";
+
+@import "block/bg-element.css";
+@import "block/blog.css";
+
+@import "block/cat-paw.css";
+@import "block/contacts.css";
+
+@import "block/emergency.css";
+
+@import "block/facts.css";
+@import "block/footer.css";
+
+@import "block/gallery.css";
+@import "block/grid.css";
+@import "block/guest.css";
+
+@import "block/header.css";
+@import "block/hero.css";
+
+@import "block/protocol.css";
+
+@import "block/rules.css";
+
+@import "block/skills.css";
+@import "block/statements.css";
+
+@import "block/timeline.css";
+
+@import "block/view.css";
