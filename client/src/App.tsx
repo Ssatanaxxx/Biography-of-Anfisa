@@ -1,6 +1,6 @@
 import "./App.css"
 import { AboutUsLoader } from "./pages/AboutUs/AboutUsLoader";
-import { Blog } from "./pages/Blog/Blog";
+import { BlogLoader } from "./pages/Blog/BloLoader";
 import { Footer } from "./pages/Footer/Footer";
 import { Gallery } from "./pages/Gallery/Gallery";
 import { Guests } from "./pages/Guests/Guests";
@@ -28,7 +28,7 @@ function App() {
             <SkillsLoader />
           </section>
           <section className="screen screen--blog" id="blog">
-            <Blog />
+            <BlogLoader />
           </section>
           <section className="screen screen--gallery" id="gallery">
             <Gallery />

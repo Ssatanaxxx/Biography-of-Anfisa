@@ -24,6 +24,9 @@
 }
 
 .anatomy-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 2rem;
     background-color: white;
     border-radius: 1rem;

@@ -32,6 +32,8 @@
 }
 
 .gallery-button {
+    display: flex;
+    flex-direction: row-reverse;
     background: none;
     border: none;
 }

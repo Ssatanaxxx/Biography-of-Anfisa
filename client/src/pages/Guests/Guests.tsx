@@ -1,82 +1,123 @@
-
-
+import { useEffect, useRef, useState } from 'react';
 
 export const Guests = () => {
+    const [visibleCards, setVisibleCards] = useState<boolean[]>([]);
+    const cardsRef = useRef<HTMLDivElement[]>([]);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const index = cardsRef.current.indexOf(entry.target as HTMLDivElement);
+                        setVisibleCards(prev => {
+                            const newVisible = [...prev];
+                            newVisible[index] = true;
+                            return newVisible;
+                        });
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.1 }
+        );
+
+        cardsRef.current.forEach(card => {
+            if (card) observer.observe(card);
+        });
+
+        return () => {
+            cardsRef.current.forEach(card => {
+                if(card) observer.unobserve(card)
+            })
+        };
+    }, []);
+
+    const addToRefs = (el: HTMLDivElement | null, index: number) => {
+        if (el && !cardsRef.current.includes(el)) {
+            cardsRef.current[index] = el;
+        }
+    };
+
     return (
         <div className="guests-container">
             <h2 className="section-title">Когда приходят гости</h2>
             <p className="section-subtitle">Мой официальный протокол поведения для посетителей</p>
 
             <div className="protocol-steps">
-                {/* <!-- Шаг 1 --> */}
-                <div className="protocol-card protocol-card--inspection">
-                    <div className="protocol-number">01</div>
-                    <div className="protocol-content">
-                        <h3>Тщательный осмотр</h3>
-                        <p>Обнюхиваю гостей на предмет чужих кошачьих запахов и принесенных лакомств. Особое
-                            внимание уделяю обуви и сумкам.</p>
-                        <div className="protocol-duration">Длительность: 3-7 минут</div>
+                {[
+                    {
+                        id: 1,
+                        type: 'inspection',
+                        title: 'Тщательный осмотр',
+                        description: 'Обнюхиваю гостей на предмет чужих кошачьих запахов и принесенных лакомств. Особое внимание уделяю обуви и сумкам.',
+                        duration: 'Длительность: 3-7 минут',
+                        icon: '🔍'
+                    },
+                    {
+                        id: 2,
+                        type: 'ignore',
+                        title: 'Тактика игнорирования',
+                        description: 'Делаю вид, что гости мне совершенно неинтересны. Ухожу в другую комнату, демонстративно повернувшись спиной.',
+                        duration: 'Длительность: 10-15 минут',
+                        icon: '🙈'
+                    },
+                    {
+                        id: 3,
+                        type: 'approach',
+                        title: 'Осторожное сближение',
+                        description: 'Подхожу к самому тихому гостю, делая вид, что случайно оказалась рядом. Позволяю погладить себя ровно один раз.',
+                        duration: 'Длительность: 2-3 минуты',
+                        icon: '🐾'
+                    },
+                    {
+                        id: 4,
+                        type: 'test',
+                        title: 'Проверка на прочность',
+                        description: 'Внезапно запрыгиваю гостю на колени без предупреждения. Если не сбрасывают - автоматически получают статус "проверенный".',
+                        duration: 'Длительность: до конца визита',
+                        icon: '⚡'
+                    },
+                    {
+                        id: 5,
+                        type: 'begging',
+                        title: 'Выпрашивание еды',
+                        description: 'Использую гостей как дополнительный источник угощений. Делаю максимально жалобные глаза, даже если только что поела.',
+                        duration: 'Длительность: пока не дадут еду',
+                        icon: '🥺'
+                    }
+                ].map((step, index) => (
+                    <div
+                        key={step.id}
+                        ref={el => addToRefs(el, index)}
+                        className={`protocol-card protocol-card--${step.type} ${visibleCards[index] ? 'visible' : ''
+                            }`}
+                    >
+                        <div className="protocol-number">{String(step.id).padStart(2, '0')}</div>
+                        <div className="protocol-content">
+                            <h3>{step.title}</h3>
+                            <p>{step.description}</p>
+                            <div className="protocol-duration">{step.duration}</div>
+                        </div>
+                        <div className="protocol-icon floating pulse spin-flicker">
+                            {step.icon}
+                        </div>
                     </div>
-                    <div className="protocol-icon">🔍</div>
-                </div>
-
-                {/* <!-- Шаг 2 --> */}
-                <div className="protocol-card protocol-card--ignore">
-                    <div className="protocol-number">02</div>
-                    <div className="protocol-content">
-                        <h3>Тактика игнорирования</h3>
-                        <p>Делаю вид, что гости мне совершенно неинтересны. Ухожу в другую комнату,
-                            демонстративно повернувшись спиной.</p>
-                        <div className="protocol-duration">Длительность: 10-15 минут</div>
-                    </div>
-                    <div className="protocol-icon">🙈</div>
-                </div>
-
-                {/* <!-- Шаг 3 --> */}
-                <div className="protocol-card protocol-card--approach">
-                    <div className="protocol-number">03</div>
-                    <div className="protocol-content">
-                        <h3>Осторожное сближение</h3>
-                        <p>Подхожу к самому тихому гостю, делая вид, что случайно оказалась рядом. Позволяю
-                            погладить себя ровно один раз.</p>
-                        <div className="protocol-duration">Длительность: 2-3 минуты</div>
-                    </div>
-                    <div className="protocol-icon">🐾</div>
-                </div>
-
-                {/* <!-- Шаг 4 --> */}
-                <div className="protocol-card protocol-card--test">
-                    <div className="protocol-number">04</div>
-                    <div className="protocol-content">
-                        <h3>Проверка на прочность</h3>
-                        <p>Внезапно запрыгиваю гостю на колени без предупреждения. Если не сбрасывают -
-                            автоматически получают статус "проверенный".</p>
-                        <div className="protocol-duration">Длительность: до конца визита</div>
-                    </div>
-                    <div className="protocol-icon">⚡</div>
-                </div>
-
-                {/* <!-- Шаг 5 --> */}
-                <div className="protocol-card protocol-card--begging">
-                    <div className="protocol-number">05</div>
-                    <div className="protocol-content">
-                        <h3>Выпрашивание еды</h3>
-                        <p>Использую гостей как дополнительный источник угощений. Делаю максимально жалобные
-                            глаза, даже если только что поела.</p>
-                        <div className="protocol-duration">Длительность: пока не дадут еду</div>
-                    </div>
-                    <div className="protocol-icon">🥺</div>
-                </div>
+                ))}
             </div>
 
             <div className="guest-rules">
                 <h3>Строгие правила для гостей:</h3>
                 <ul className="rules-list">
-                    <li>Не пытаться брать меня на руки без разрешения</li>
-                    <li>Не смотреть мне прямо в глаза - это угроза</li>
-                    <li>Не гладить против шерсти - это карается укусом</li>
-                    <li>Все принесенные угощения подлежат обязательной проверке</li>
-                    <li>Фотосессии только с моего согласия (обычно соглашаюсь за угощение)</li>
+                    {[
+                        'Не пытаться брать меня на руки без разрешения',
+                        'Не смотреть мне прямо в глаза - это угроза',
+                        'Не гладить против шерсти - это карается укусом',
+                        'Все принесенные угощения подлежат обязательной проверке',
+                        'Фотосессии только с моего согласия (обычно соглашаюсь за угощение)'
+                    ].map((rule, index) => (
+                        <li key={index}>{rule}</li>
+                    ))}
                 </ul>
 
                 <div className="emergency-box">
@@ -86,5 +127,5 @@ export const Guests = () => {
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};

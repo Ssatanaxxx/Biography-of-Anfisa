@@ -35,77 +35,299 @@
 @import "./css/style.css";
 
 .burger-button {
-    margin-left: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 2rem;
-    height: 2rem;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    z-index: 10;
-}
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 2rem;
+  height: 2rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 10;
 
-.burger-line {
+  span {
     width: 2rem;
     height: 0.25rem;
     background: #333;
-    transition: all 0.3s linear;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    position: relative;
+    transform-origin: 1px;
+  }
+
+  &.open {
+    span {
+      &:first-child {
+        transform: rotate(45deg);
+      }
+
+      &:nth-child(2) {
+        opacity: 0;
+      }
+
+      &:last-child {
+        transform: rotate(-45deg);
+      }
+    }
+  }
 }
 
-.burger-button.open .burger-line:nth-child(1) {
-    transform: rotate(45deg) translate(0.4rem, 0.4rem);
+.menu-content {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  background: white;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 5;
+  padding: 5rem 2rem;
+
+  &.open {
+    transform: translateX(0);
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      margin: 2rem 0;
+
+      a {
+        font-size: 1.5rem;
+        text-decoration: none;
+        color: #333;
+      }
+    }
+  }
 }
 
-.burger-button.open .burger-line:nth-child(2) {
-    opacity: 0;
+
+.burger-button {
+  position: relative;
+  width: 30px;
+  height: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 100;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__line {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: #333;
+    transition: all 0.3s ease;
+  }
+
+  &.open {
+    .burger-button__line {
+      &:nth-child(1) {
+        transform: translateY(10px) rotate(45deg);
+      }
+
+      &:nth-child(2) {
+        opacity: 0;
+      }
+
+      &:nth-child(3) {
+        transform: translateY(-10px) rotate(-45deg);
+      }
+    }
+  }
 }
 
-.burger-button.open .burger-line:nth-child(3) {
-    transform: rotate(-45deg) translate(0.4rem, -0.4rem);
+.header {
+  z-index: 100;
 }
 
-.header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.burger-container {
+  position: relative;
+  padding: 20px;
 }
 
+.burger-button {
+  position: relative;
+  margin-bottom: 30px;
+  /* остальные стили как были */
+}
 
-
-
-/* Базовые стили меню (скрыто) */
 .burger-menu {
-    position: fixed;
-    top: 0;
-    left: -100%; /* Прячем за пределами экрана */
-    width: 300px; /* Ширина меню */
-    height: 100vh;
-    background: white;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-    transition: left 0.3s ease; /* Анимация выезда */
-    z-index: 100;
-    opacity: 0; /* Полная прозрачность */
-    pointer-events: none; /* Клики сквозь меню */
-}
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 99;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s ease;
+  display: flex;
+  padding-left: 45px;
+  list-style-type: none;
+  align-items: center;
 
-/* Состояние "открыто" */
-.burger-menu.open {
-    margin-left: auto;
-    left: 0; /* Показываем */
-    opacity: 1; /* Полная видимость */
-    pointer-events: auto; /* Клики работают */
-}
-
-/* Список ссылок (появляется с задержкой) */
-.burger-list {
-    padding: 60px 20px;
-    opacity: 0;
-    transition: opacity 0.2s ease 0.1s; /* Задержка 0.1s */
-}
-
-.burger-menu.open .burger-list {
+  &.open {
     opacity: 1;
+    visibility: visible;
+
+    .burger-menu__item {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  &__content {
+    width: 100%;
+    max-width: 800px;
+  }
+
+  &__list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  &__item {
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    will-change: transform, opacity;
+  }
+
+  &__link {
+    color: white;
+    font-size: 2rem;
+    text-decoration: none;
+    display: block;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+    position: relative;
+
+    &:hover {
+      color: #ff7b00;
+      transform: translateX(10px);
+
+      &::before {
+        content: "→";
+        position: absolute;
+        left: -20px;
+        opacity: 1;
+      }
+    }
+
+    &::before {
+      content: "→";
+      position: absolute;
+      left: -10px;
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .burger-menu {
+    &__link {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+.anatomy__views {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: white;
+  padding: 20px;
+  border: 2px solid red;
+  /* Яркая рамка для видимости */
+  z-index: 1000;
+  color: black;
+  /* Убедитесь, что текст виден */
+}
+
+.view {
+  display: block !important;
+    background-color: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    display: none;
+}
+
+
+/* anatomy-section - элементы списка */
+.anatomy-section {
+  cursor: pointer;
+  padding: 20px;
+  margin: 10px 0;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.anatomy-section:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.anatomy-section.active {
+  background: #f8f9fa;
+  border-left: 4px solid #ff6b6b;
+}
+
+/* Модальное окно с контентом */
+.anatomy__views {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 600px;
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translate(-50%, -45%); }
+  to { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+/* Кнопки */
+.button--close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #ff6b6b;
+  color: white;
+}
+
+.view__nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.gallery-carousel { 
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

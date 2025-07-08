@@ -26,7 +26,6 @@
     height: 8px;
     background: #eee;
     border-radius: 4px;
-    margin: 1rem 0;
     overflow: hidden;
 }
 
@@ -36,7 +35,6 @@
     border-radius: 4px;
 }
 
-/* Стили для лапок вместо эмодзи */
 .skill-paw {
     display: inline-block;
     width: 24px;
@@ -53,7 +51,6 @@
     border-radius: 50%;
 }
 
-/* Основная подушечка */
 .skill-paw::before {
     width: 16px;
     height: 16px;
@@ -61,7 +58,6 @@
     left: 4px;
 }
 
-/* Маленькие подушечки */
 .skill-paw::after {
     width: 8px;
     height: 8px;
@@ -81,4 +77,77 @@
 
 .skills-container {
     background-image: url("/lapka.png");
+}
+
+
+.skill-card {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.skill-card:nth-child(1) { animation-delay: 0.1s; }
+.skill-card:nth-child(2) { animation-delay: 0.2s; }
+.skill-card:nth-child(3) { animation-delay: 0.3s; }
+.skill-card:nth-child(4) { animation-delay: 0.4s; }
+.skill-card:nth-child(5) { animation-delay: 0.5s; }
+
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.skill-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+}
+
+.skill-icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.skill-meter-container {
+    width: 100%;
+    height: 20px;
+    background: #f0f0f0;
+    border-radius: 10px;
+    margin: 10px 0;
+    overflow: hidden;
+}
+
+.skill-meter {
+    height: 100%;
+    background: linear-gradient(90deg, #ff6b6b, #ff8e8e);
+    border-radius: 10px;
+    width: 0;
+    transition: width 1s ease-out;
+    position: relative;
+}
+
+.skill-level {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.7rem;
+    color: white;
+    text-shadow: 0 0 2px rgba(0,0,0,0.5);
 }

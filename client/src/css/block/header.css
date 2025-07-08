@@ -3,9 +3,8 @@
     top: 0;
     left: 0;
     width: 100%;
-    padding: 2rem;
     z-index: 100;
-    justify-content: end;
+    justify-content: start;
     align-items: center;
     mix-blend-mode: difference;
     color: white;
